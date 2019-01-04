@@ -9,10 +9,9 @@ public class Reader implements Runnable {
     private Books book;
     private int counter = 10000;
 
-    public Reader(Books book, listOfBooks listBooks) {
+    public Reader(Books book) {
         this.id = counter++;
         this.book = book;
-        this.
     }
 
     public void run(){
