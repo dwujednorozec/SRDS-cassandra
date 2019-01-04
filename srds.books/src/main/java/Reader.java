@@ -9,22 +9,28 @@ public class Reader implements Runnable {
     private Books book;
     private int counter = 10000;
 
-    public Reader(Books book,) {
+    public Reader(Books book, List<String> titles) {
         this.id = counter++;
         this.book = book;
+        this.titles = titles;
     }
 
     public void run(){
         Random generator = new Random();
         try {
-            generator.nextInt(4);
-
             //check if dostepne
 
-            if() {// wyporzyczamy jeżeli są dostępne WSZYSTKIE
+            String title = titles.get(generator.nextInt(4));
+            int numberOf = generator.nextInt(20);
 
-            } else { ///odrzucamy wyporzycenie
+            //WTF?!
+            List<RequestBook> requestBooks = new ArrayList<>();
+            requestBooks = book.getBook(title, numberOf);
 
+            if(requestBooks.isEmpty()) {// odrzucamy wyporzycenie
+                //break;
+            } else { ///wyporzyczamy jeżeli są dostępne WSZYSTKIE
+                //do staff
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -32,10 +38,10 @@ public class Reader implements Runnable {
     }
 
     //uzupelnic args
-    public static void createReaderAndGo (int count, Books book) {
+    public static void createReaderAndGo (int count, Books book, List<String> titles) {
         ArrayList<Thread> threads = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            Thread thread = new Thread(new Reader(book));
+            Thread thread = new Thread(new Reader(book, titles));
             thread.start();
             threads.add(thread);
         }

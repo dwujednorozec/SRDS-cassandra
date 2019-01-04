@@ -31,7 +31,7 @@ public class Books {
 
     }
 
-    public List<RequestBook> getBook(int bookName, int requestedBooks) {
+    public List<RequestBook> getBook(String bookName, int requestedBooks) {
         StringBuilder sb =
                 new StringBuilder("SELECT * FROM ").append(TABLE_NAME).append(" WHERE book_name=").append(bookName);
 

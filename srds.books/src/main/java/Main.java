@@ -9,7 +9,14 @@ public class Main {
 
         Backend backend = new Backend("config.properties");
 
+        Insertbooks insertbooks = new Insertbooks(backend);
+
+        insertbooks.insertbookByTitle();
+
         Books books = new Books(backend);
+
+        Reader.createReaderAndGo(clientCount, books, insertbooks.getTitles());
+
 
     }
 }
