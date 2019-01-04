@@ -23,7 +23,7 @@ public class Books {
                 new StringBuilder("SELECT * FROM ").append(TABLE_NAME).append(" WHERE book_name=").append(bookName);
 
         String query = sb.toString();
-      //  ResultSet rs = execute(query); why not work?
+        //  ResultSet rs = execute(query); why not work?
         ResultSet rs = session.execute(query);
 
         List<RequestBook> requestBooks = new ArrayList<>();
