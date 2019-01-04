@@ -4,7 +4,7 @@ public class Books {
     private int id;
     private int nr_of_free_books;
     private int total_books;
-    private string book_name;
+    private String book_name;
 
     public int getId() {
         return id;
@@ -18,7 +18,7 @@ public class Books {
         return total_books;
     }
 
-    public string getBookName() {
+    public String getBookName() {
         return book_name;
     }
 
