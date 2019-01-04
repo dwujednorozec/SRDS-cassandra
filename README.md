@@ -9,7 +9,7 @@ TODO:
 
 REQUEST_TABLE:
  - id uuid,
- - book_name string,
+ - id_book int,
  - iduser int, ("RODO!!!")
  - timestamp bigint,
  - PRIMARY KEY();
