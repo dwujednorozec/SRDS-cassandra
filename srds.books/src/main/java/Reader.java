@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Reader implements Runnable {
-    List<String> supplierNames1 = new ArrayList<String>();
+    List<String> titles = new ArrayList<String>();
     private String book_name;
     private int id;
     private Books book;

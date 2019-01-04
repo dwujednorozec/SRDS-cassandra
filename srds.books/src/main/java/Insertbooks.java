@@ -1,6 +1,9 @@
 import CassBackend.Backend;
 import com.datastax.driver.core.Session;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Insertbooks {
     private Session session;
     //  private int requestedBooks;
@@ -39,7 +42,13 @@ public class Insertbooks {
         session.execute(query4);
     }
 
-    public String[] getTitles() {
-        return new String[] { "Potop, Dziady, Hari Pota, Hari Pota 2" };
+    public List<String> getTitles() {
+        List<String> titles = new ArrayList<String>();
+        titles.add("Potop");
+        titles.add("Dziady");
+        titles.add("Hari Pota");
+        titles.add("Hari Pota 2");
+        return titles;
+        //return new String[] { "Potop, Dziady, Hari Pota, Hari Pota 2" };
     }
 }
