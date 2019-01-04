@@ -28,6 +28,9 @@ public class Main {
 
                 + " VALUES(1,'Hari Pota', 20, 80);" ;
 
+        String query4 = "INSERT INTO book_table (id_book, book_name, nr_of_free_books, total_books)"
+
+                + " VALUES(1,'Hari Pota 2', 10, 180);" ;
         //Creating Cluster object
         Cluster cluster = Cluster.builder().addContactPoint("127.0.0.1").build();
 
@@ -39,6 +42,9 @@ public class Main {
         session.execute(query2);
 
         session.execute(query3);
+
+        session.execute(query4);
+
 
     }
 }
