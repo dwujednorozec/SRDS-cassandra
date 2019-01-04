@@ -7,8 +7,8 @@ public class CassandraTableModel {
     public CassandraTableModel(Session session) {
         this.session = session;
     }
-
-    public void createRequestTable(String tableName) {
+//Rozkminić tableName !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void createRequestTable(String tableName) {  
         StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(tableName).append("(")
                 .append("id uuid, ")
@@ -20,8 +20,8 @@ public class CassandraTableModel {
         String query = sb.toString();
         session.execute(query);
     }
-
-    public void createBookTable(String tableName) {
+//Rozkminić tableName !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void createBookTable(String tableName) {  
         StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(tableName).append("(")
                 .append("id_book int, ")
