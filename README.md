@@ -7,8 +7,8 @@ TODO:
 
 
 TABLE:
-  id uuid,
-  book_name string,
-  iduser int,
-  timestamp bigint,
-  PRIMARY KEY();
+ - id uuid,
+ - book_name string,
+ - iduser int,
+ - timestamp bigint,
+ - PRIMARY KEY();
