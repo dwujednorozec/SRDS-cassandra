@@ -3,7 +3,7 @@ Projekt na zajęcia SRDS z cassandra.
 
 TODO:
 - Tabele
-- Zakodzić!
+- Zakodzić!!
 - Testy
 
 
