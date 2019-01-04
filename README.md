@@ -1,3 +1,6 @@
 # SRDS-cassandra
-Projekt na zajęcia SRDS z cassandry.
-a
+Projekt na zajęcia SRDS z cassandra.
+
+TODO:
+- Tabele
+- Testy 
