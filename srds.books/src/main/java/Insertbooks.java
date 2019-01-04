@@ -29,6 +29,7 @@ public class Insertbooks {
                 + " VALUES(1,'Hari Pota 2', 10, 180);" ;
 
 
+        //wpisanie do bazy tytułów
         session.execute(query1);
 
         session.execute(query2);
