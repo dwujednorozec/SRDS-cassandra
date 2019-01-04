@@ -9,6 +9,6 @@ TODO:
 TABLE:
  - id uuid,
  - book_name string,
- - iduser int,
+ - iduser int, ("RODO!!!")
  - timestamp bigint,
  - PRIMARY KEY();
