@@ -1,7 +1,20 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Reader implements Runnable {
+    List<String> supplierNames1 = new ArrayList<String>();
+    private String book_name;
+    private int id;
+    private Books book;
+    private int counter = 10000;
+
+    public Reader(Books book, listOfBooks listBooks) {
+        this.id = counter++;
+        this.book = book;
+        this.
+    }
+
     public void run(){
         Random generator = new Random();
         try {
@@ -18,10 +31,10 @@ public class Reader implements Runnable {
     }
 
     //uzupelnic args
-    public static void createReaderAndGo (int count) {
+    public static void createReaderAndGo (int count, Books book) {
         ArrayList<Thread> threads = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            Thread thread = new Thread(new Reader());
+            Thread thread = new Thread(new Reader(book));
             thread.start();
             threads.add(thread);
         }
