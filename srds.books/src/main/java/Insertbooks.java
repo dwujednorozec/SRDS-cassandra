@@ -1,6 +1,14 @@
 import CassBackend.Backend;
+import com.datastax.driver.core.Session;
 
 public class Insertbooks {
+    private Session session;
+    //  private int requestedBooks;
+
+    public Insertbooks(Backend backend) {
+        this.session = backend.getSession();
+    }
+
     public void insertbookByTitle() {
 
         String query1 = "INSERT INTO book_table (id_book, book_name, nr_of_free_books, total_books)"
@@ -21,11 +29,6 @@ public class Insertbooks {
                 + " VALUES(1,'Hari Pota 2', 10, 180);" ;
 
 
-        Backend backend = new Backend("config.properties");
-
-
-        session = backend.getSession();
-
         session.execute(query1);
 
         session.execute(query2);
@@ -35,4 +38,7 @@ public class Insertbooks {
         session.execute(query4);
     }
 
+    public String[] getTitles() {
+        return new String[] { "Potop, Dziady, Hari Pota, Hari Pota 2" };
+    }
 }
