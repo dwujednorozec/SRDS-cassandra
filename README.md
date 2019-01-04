@@ -10,7 +10,7 @@ TODO:
 REQUEST_TABLE:
  - id uuid,
  - id_book int,
- - iduser int, ("RODO!!!")
+ - id_user int, ("RODO!!!")
  - timestamp bigint,
  - PRIMARY KEY(id, id_book);
  

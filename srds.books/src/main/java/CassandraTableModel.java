@@ -1,0 +1,46 @@
+import com.datastax.driver.core.*;
+
+
+public class CassandraTableModel {
+    protected Session session;
+
+    public CassandraTableModel(Session session) {
+        this.session = session;
+    }
+
+    public void createRequestTable(String tableName) {
+        StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
+                .append(tableName).append("(")
+                .append("id uuid, ")
+                .append("id_book int,")
+                .append("id_user int,")
+                .append("timestamp bigint,")
+                .append("PRIMARY KEY (id, id_book));");
+
+        String query = sb.toString();
+        session.execute(query);
+    }
+
+    public void createBookTable(String tableName) {
+        StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
+                .append(tableName).append("(")
+                .append("id_book int, ")
+                .append("book_name string,")
+                .append("nr_of_free_books int,")
+                .append("total_books int,")
+                .append("PRIMARY KEY (id_book, book_name));");
+
+        String query = sb.toString();
+        session.execute(query);
+
+    }
+
+    public ResultSet execute(String query) {;
+        return session.execute(query);
+    }
+
+    public ResultSet executeQuorum(String query) {
+        Statement statement = new SimpleStatement(query).setConsistencyLevel(ConsistencyLevel.QUORUM);
+        return session.execute(statement);
+    }
+}
