@@ -3,7 +3,8 @@ Projekt na zajęcia SRDS z cassandra.
 
 TODO:
 - Tabele
-- Testy 
+- Zakodzić
+- Testy
 
 
 REQUEST_TABLE:
