@@ -1,3 +1,4 @@
+import CassBackend.Backend;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;
 
@@ -8,17 +9,29 @@ import java.util.List;
 public class Books {
     private int id;
     private static final String TABLE_NAME = "Books";
-    private String bookName;
+ //   private String bookName;
     private Session session;
-    private int requestedBooks;
+  //  private int requestedBooks;
 
-    public Books(String bookName, Session session, int requestedBooks) {
-        this.bookName = bookName;
-        this.session = session;
-        this.requestedBooks = requestedBooks;
+    public Books(Backend backend) {
+        //this.bookName = bookName;
+        //this.session = session;
+        this.session = backend.getSession();
+     //   this.requestedBooks = requestedBooks;
     }
 
-    public List<RequestBook> getBook(int bookName) {
+    public Boolean rentBook(){
+        Boolean result = false;
+
+
+        return result;
+    }
+
+    public void returnBook(){
+
+    }
+
+    public List<RequestBook> getBook(int bookName, int requestedBooks) {
         StringBuilder sb =
                 new StringBuilder("SELECT * FROM ").append(TABLE_NAME).append(" WHERE book_name=").append(bookName);
 

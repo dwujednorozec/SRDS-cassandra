@@ -1,5 +1,6 @@
 import CassBackend.Backend;
 
+
 public class Main {
     public static void main(String[] args) {
         final int clientCount = 150;
@@ -8,6 +9,7 @@ public class Main {
 
         Backend backend = new Backend("config.properties");
 
+        Books books = new Books(backend);
 
     }
 }
