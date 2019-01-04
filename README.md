@@ -3,7 +3,15 @@ Projekt na zajęcia SRDS z cassandra.
 
 TODO:
 - Tabele ✓
-- Zakodzić!!!
+- Zakodzić!!!:
+    - dodanie ksiazek (przed odpaleniem trzeba dodac ksiazki do bazy (z 10 pozycji po 100 sztuk?) polecam zrobic to w osobnym programie czy cos)
+    - dodanie requesta:
+        - sprawdzenie czy posiadamy ksiazke w books_table i czy sa wolne egzemplarze
+        - dodanie wpisu do request table (zmniejszyc licznik na ilosci dostepnych w books table - tu albo w nastepnym kroku)
+        - sprawdzenie czy approved??? (rozkminic jak to zrobic)
+    - oddanie ksiazki:
+        - usuniecie wpisu>??? jak to zrobi??
+    - jakies ładne statystyki do wywalenia zeby wszyscy byli szczesliwi i podziwiali piekne efekty
 - Testy
 
 
