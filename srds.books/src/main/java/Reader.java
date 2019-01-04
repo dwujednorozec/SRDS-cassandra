@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Client implements Runnable {
+public class Reader implements Runnable {
     public void run(){
         Random generator = new Random();
         try {
