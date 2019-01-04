@@ -1,9 +1,3 @@
-import com.datastax.driver.core.Session;
-import static com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable;
-
-
-
-import java.util.UUID;
 
 
 public class RequestBook extends CassandraTableModel {
@@ -13,6 +7,27 @@ public class RequestBook extends CassandraTableModel {
     private int id_user;
     private int requestedBooks;
     private long timestamp;
+
+
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public int getBookID() {
+        return id_book;
+    }
+
+    public int getUserid() {
+        return id_user;
+    }
+
+    public int getRequestedBooks() {
+        return requestedBooks;
+    }
+
+    public int getTimestamp() {
+        return timestamp;
+    }
 
     public RequestBook(Session session, int requestId, int id_book, int id_user, int requestedBooks) {
         super(session);
