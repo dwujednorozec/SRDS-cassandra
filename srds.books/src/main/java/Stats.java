@@ -1,23 +1,21 @@
 public class Stats {
-    private int id;
-    private int nr_of_free_books;
-    private int total_books;
-    private String book_name;
+    private final int wypozyczone = 0;
+    private final int niewyporzyczone = 0;
 
-    public int getId() {
-        return id;
-    }
 
-    public int getNumberOfFreeBooks() {
-        return nr_of_free_books;
-    }
+    public void showStats() {
+        System.out.println("happyClients = "+happyClients);
+        System.out.println("sadClients = "+sadClients);
+        System.out.println("cancelingClients = "+cancelingClients);
+        System.out.println("angryClients = "+angryClients);
+        System.out.println("------\nHappy Clients:");
+        reservations.forEach(r -> System.out.print("" + r + ", "));
+        System.out.println("\n------");
 
-    public int getTotalBooks() {
-        return total_books;
-    }
-
-    public String getBookName() {
-        return book_name;
+        System.out.println("------\nSad Clients:");
+        sad.forEach(r -> System.out.print("" + r + ", "));
+        System.out.println("\n------");
+    /// Staty do poprawienia
     }
 
 }
