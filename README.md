@@ -15,8 +15,9 @@ REQUEST_TABLE:
  - PRIMARY KEY();
  
  BOOK_TABLE:
- - id int;
+ - id_book int;
  - book_name string,
  - nr_of_free_books int,
+ - total_books int,
  - PRIMARY KEY();
  
