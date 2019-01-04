@@ -12,12 +12,12 @@ REQUEST_TABLE:
  - id_book int,
  - iduser int, ("RODO!!!")
  - timestamp bigint,
- - PRIMARY KEY();
+ - PRIMARY KEY(id, id_book);
  
  BOOK_TABLE:
  - id_book int;
  - book_name string,
  - nr_of_free_books int,
  - total_books int,
- - PRIMARY KEY();
+ - PRIMARY KEY(id_book, book_name);
  
