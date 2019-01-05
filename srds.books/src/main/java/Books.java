@@ -1,6 +1,7 @@
 import CassBackend.Backend;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;
+import jnr.ffi.annotations.In;
 
 
 import java.util.ArrayList;
@@ -20,13 +21,14 @@ public class Books {
      //   this.requestedBooks = requestedBooks;
     }
 
-    public List<String> rentBook(List<String> titles, int reqNumber){
+    public List<String> rentBook(List<String> titles){
        // Boolean result = false;
         List<String> result = new ArrayList<>();
 
-        for (String title : titles) {
-            List<String> requestBooks = new ArrayList<>();
-            requestBooks = getBook(title,reqNumber);
+        for (int i=0;i<=titles.size();i++) {
+            List<String> requestBooks;
+            requestBooks = getBook(titles.get(i), 1+Integer.valueOf(titles.get(i+1)));
+            i++;
 
             if (requestBooks.isEmpty()) {
                 result.add("NOT_AVAILABLE");

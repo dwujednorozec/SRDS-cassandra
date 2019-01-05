@@ -41,13 +41,15 @@ public class Reader implements Runnable {
 
             for (int i=0;i<=reqNumber;i++){
                 myTitles.add(titles.get(generator.nextInt(randomizerBooks)));
+                myTitles.add(Integer.toString(generator.nextInt(20)));
                 //przerob to na liste w liscie czy cos zeby mogl miec kilka pozycji kazdej
+                //albo zostaw tak na retarda
                 //dobre miejsce na staty
             }
 
 
 
-            requestRet = book.rentBook(myTitles,reqNumber);
+            requestRet = book.rentBook(myTitles);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
