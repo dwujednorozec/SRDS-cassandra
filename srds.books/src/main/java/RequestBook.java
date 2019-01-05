@@ -29,7 +29,7 @@ public class RequestBook extends CassandraTableModel {
 
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append(TABLE_NAME).append("(id, id_book, id_user, timestamp)")
-                .append("VALUES (").append(UUID.randomUUID())
+                .append("VALUES (").append(requestId)
                 .append(", ").append(id_book)
                 .append(", ").append(id_user)
                 .append(", ").append(requestedBooks)

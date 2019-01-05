@@ -47,6 +47,7 @@ public class Books {
 
         for (int i=0;i<(titles.size()/2);i++){
             RequestBook requestBook = new RequestBook(session,requestID,Integer.valueOf(result.get(i)),idUser,1+Integer.valueOf(titles.get(i+1)));
+            requestBook.saveRequest();
         }
 
         //wait nad check dopisac
