@@ -47,9 +47,11 @@ public class Reader implements Runnable {
                 //dobre miejsce na staty
             }
 
-
-
             requestRet = book.rentBook(myTitles,id);
+
+            Thread.sleep(generator.nextInt(100)); //nie wiem czy to sec czy ms do sprawdzenia
+
+            book.returnBook();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
