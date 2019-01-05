@@ -31,3 +31,5 @@ REQUEST_TABLE:
 
 // przerobienie na koszyk requestow: dodanie fora i powielanie requestu + dodanie UUID pojedynczego requestu
 
+Biore:
+    - Reader.java i Books.java i robie tam mambo jambo transparentne jebando
