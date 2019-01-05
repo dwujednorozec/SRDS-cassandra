@@ -10,9 +10,10 @@ public class Main {
 
         Backend backend = new Backend("config.properties");
 
-        Insertbooks insertbooks = new Insertbooks(backend);
+        Insertbooks insertbooks = new Insertbooks(backend.getSession());
 
-        insertbooks.insertbookByTitle();
+        //insertbooks.insertbookByTitle();
+        insertbooks.saveBooks(0,"Potop",50,50);
 
         Books books = new Books(backend);
 

@@ -54,7 +54,7 @@ public class Insertbooks extends CassandraTableModel{
 //        session.execute(query4);
 //    }
 
-    public void saveRequest(int id_book, String book_name, int nr_of_free_books, int total_books) {
+    public void saveBooks(int id_book, String book_name, int nr_of_free_books, int total_books) {
         createBookTable(TABLE_NAME);
 
         StringBuilder sb = new StringBuilder("INSERT INTO ")
