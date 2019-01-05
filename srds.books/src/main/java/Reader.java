@@ -50,7 +50,7 @@ public class Reader implements Runnable {
             requestRet = book.rentBook(myTitles,id);
 
             Thread.sleep(generator.nextInt(100)); //nie wiem czy to sec czy ms do sprawdzenia
-
+            // nie wiem ile chcicałeś ustalić ale to jest w ms
             book.returnBook();
 
         } catch (InterruptedException e) {

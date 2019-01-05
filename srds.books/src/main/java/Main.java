@@ -9,6 +9,7 @@ public class Main {
         final int randomizerBooks = 3;
 
         Backend backend = new Backend("config.properties");
+        //srds.books/src/main/resources/config.properties  ------śćieżka
 
         Insertbooks insertbooks = new Insertbooks(backend.getSession());
 
