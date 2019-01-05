@@ -10,8 +10,12 @@ import java.util.UUID;
 public class Books {
     private UUID requestID;
     private static final String TABLE_NAME = "Books";
+    List<String> result = new ArrayList<>();
+    List<Integer> numberOfBooks = new ArrayList<>(); // ilosc ksiazek jakie zarzadal reader
  //   private String bookName;
     private Session session;
+    private int numberOfTitles;
+    private int lastUserId;
   //  private int requestedBooks;
 
     public Books(Backend backend) {
@@ -23,7 +27,8 @@ public class Books {
 
     public List<String> rentBook(List<String> titles,int idUser){
        // Boolean result = false;
-        List<String> result = new ArrayList<>();
+        numberOfTitles = titles.size()/2;
+        lastUserId = idUser;
 
         for (int i=0;i<titles.size();i++) {
             List<String> requestBooks;
@@ -32,9 +37,11 @@ public class Books {
 
             if (requestBooks.isEmpty()) {
                 result.add("NOT_AVAILABLE");
+                numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
             } else {
  // TODO need to be tested
                 result.add(requestBooks.get(0));
+                numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
             }
         }
 
@@ -45,8 +52,8 @@ public class Books {
         //TODO try to reserve and check after few sec
         requestID = UUID.randomUUID();
 
-        for (int i=0;i<(titles.size()/2);i++){
-            RequestBook requestBook = new RequestBook(session,requestID,Integer.valueOf(result.get(i)),idUser,1+Integer.valueOf(titles.get(i+1)));
+        for (int i=0;i<(numberOfTitles);i++){
+            RequestBook requestBook = new RequestBook(session,requestID,Integer.valueOf(result.get(i)),idUser,numberOfBooks.get(i));
             requestBook.saveRequest();
         }
 
@@ -57,6 +64,15 @@ public class Books {
 
     public void returnBook(){
         //trzeba zrobic jakas globalna dla klasy (tej klasy) strukture (lista po klasie? set?) ktora bedzie przechowywac co kto wypozyczyl
+        //do dopracowania troszke bo moze cos nie dzialac (na szybko dane wjebane do poprawki tez zeby bylo ladniej)
+
+        for (int i=0;i<(numberOfTitles);i++) {
+            RequestBook requestBook = new RequestBook(session, requestID, Integer.valueOf(result.get(i)), lastUserId, numberOfBooks.get(i));
+            requestBook.saveRequest();
+        }
+
+        result.clear();
+        numberOfBooks.clear();
     }
 
     public List<String> getBook(String bookName, int requestedBooks) {
