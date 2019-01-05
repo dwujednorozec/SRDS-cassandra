@@ -31,8 +31,9 @@ REQUEST_TABLE:
  - PRIMARY KEY(id_book, book_name);
 
 
+// przerobienie na koszyk requestow: dodanie fora i powielanie requestu + dodanie UUID pojedynczego requestu DONE!
 
-// przerobienie na koszyk requestow: dodanie fora i powielanie requestu + dodanie UUID pojedynczego requestu
+
 
 Biore:
     - Reader.java i Books.java i robie tam mambo jambo transparentne jebando

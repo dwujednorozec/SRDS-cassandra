@@ -25,7 +25,7 @@ public class RequestBook extends CassandraTableModel {
 // przerobienie na koszyk requestow: dodanie fora i powielanie requestu + dodanie UUID pojedynczego requestu
 
     public void saveRequest() {
-        createTable(TABLE_NAME);
+        createRequestTable(TABLE_NAME);
 
         StringBuilder sb = new StringBuilder("INSERT INTO ")
                 .append(TABLE_NAME).append("(id, id_book, id_user, timestamp)")
