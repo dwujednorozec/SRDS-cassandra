@@ -34,8 +34,13 @@ public class Books {
  // TODO need to be tested
                 result.add(requestBooks.get(0));
             }
-            // fruit is an element of the `fruits` array.
         }
+
+        if (result.contains("NOT_AVAILABLE")) {
+            return result;
+        }
+
+        //TODO try to reserve and check after few sec
 
         return result;
     }

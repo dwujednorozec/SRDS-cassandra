@@ -6,6 +6,7 @@ public class Main {
         final int clientCount = 150;
         final int simulationTime = 150;
         final int checkDelay = 100; // delay to make it slower a little
+        final int randomizerBooks = 3;
 
         Backend backend = new Backend("config.properties");
 
@@ -15,7 +16,7 @@ public class Main {
 
         Books books = new Books(backend);
 
-        Reader.createReaderAndGo(clientCount, books, insertbooks.getTitles());
+        Reader.createReaderAndGo(clientCount, books, insertbooks.getTitles(), randomizerBooks);
 
 
     }

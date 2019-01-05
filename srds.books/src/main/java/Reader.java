@@ -3,16 +3,19 @@ import java.util.List;
 import java.util.Random;
 
 public class Reader implements Runnable {
-    List<String> titles = new ArrayList<String>();
-    private String book_name;
+    private List<String> titles;
+    private List<String> myTitles = new ArrayList<>();
+    private List<String> requestRet = new ArrayList<>();
     private int id;
     private Books book;
     private int counter = 10000;
+    private int randomizerBooks;
 
-    public Reader(Books book, List<String> titles) {
+    public Reader(Books book, List<String> titles, int randomizerBooks) {
         this.id = counter++;
         this.book = book;
         this.titles = titles;
+        this.randomizerBooks = randomizerBooks;
     }
 
     public void run(){
@@ -33,10 +36,18 @@ public class Reader implements Runnable {
           //  } else { ///wyporzyczamy jeżeli są dostępne WSZYSTKIE
                 //do staff
            // }
+            int reqNumber;
+            reqNumber = generator.nextInt(20);
 
-            String requestRet[] = new String[10];
+            for (int i=0;i<=reqNumber;i++){
+                myTitles.add(titles.get(generator.nextInt(randomizerBooks)));
+                //przerob to na liste w liscie czy cos zeby mogl miec kilka pozycji kazdej
+                //dobre miejsce na staty
+            }
 
-            requestRet = book.
+
+
+            requestRet = book.rentBook(myTitles,reqNumber);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -44,10 +55,10 @@ public class Reader implements Runnable {
     }
 
     //uzupelnic args
-    public static void createReaderAndGo (int count, Books book, List<String> titles) {
+    public static void createReaderAndGo (int count, Books book, List<String> titles, int randomizerBooks) {
         ArrayList<Thread> threads = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            Thread thread = new Thread(new Reader(book, titles));
+            Thread thread = new Thread(new Reader(book, titles, randomizerBooks));
             thread.start();
             threads.add(thread);
         }
