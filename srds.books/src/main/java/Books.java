@@ -56,7 +56,7 @@ public class Books {
     }
 
     public void returnBook(){
-
+        //trzeba zrobic jakas globalna dla klasy (tej klasy) strukture (lista po klasie? set?) ktora bedzie przechowywac co kto wypozyczyl
     }
 
     public List<String> getBook(String bookName, int requestedBooks) {
