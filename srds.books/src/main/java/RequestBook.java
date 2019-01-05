@@ -8,13 +8,13 @@ import java.util.UUID;
 
 public class RequestBook extends CassandraTableModel {
     private static final String TABLE_NAME = "BookRequest";
-    private int requestId;
+    private UUID requestId;
     private int id_book;
     private int id_user;
     private int requestedBooks;
     private long timestamp;
 
-    public RequestBook(Session session, int requestId, int id_book, int id_user, int requestedBooks) {
+    public RequestBook(Session session, UUID requestId, int id_book, int id_user, int requestedBooks) {
         super(session);
         this.requestId = requestId;
         this.id_book = id_book;

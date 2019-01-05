@@ -1,14 +1,14 @@
 import CassBackend.Backend;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;
-import jnr.ffi.annotations.In;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Books {
-    private int id;
+    private UUID requestID;
     private static final String TABLE_NAME = "Books";
  //   private String bookName;
     private Session session;
@@ -21,11 +21,11 @@ public class Books {
      //   this.requestedBooks = requestedBooks;
     }
 
-    public List<String> rentBook(List<String> titles){
+    public List<String> rentBook(List<String> titles,int idUser){
        // Boolean result = false;
         List<String> result = new ArrayList<>();
 
-        for (int i=0;i<=titles.size();i++) {
+        for (int i=0;i<titles.size();i++) {
             List<String> requestBooks;
             requestBooks = getBook(titles.get(i), 1+Integer.valueOf(titles.get(i+1)));
             i++;
@@ -43,6 +43,13 @@ public class Books {
         }
 
         //TODO try to reserve and check after few sec
+        requestID = UUID.randomUUID();
+
+        for (int i=0;i<(titles.size()/2);i++){
+            RequestBook requestBook = new RequestBook(session,requestID,Integer.valueOf(result.get(i)),idUser,1+Integer.valueOf(titles.get(i+1)));
+        }
+
+        //wait nad check dopisac
 
         return result;
     }
