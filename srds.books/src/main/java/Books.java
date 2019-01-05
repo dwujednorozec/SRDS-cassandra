@@ -20,9 +20,22 @@ public class Books {
      //   this.requestedBooks = requestedBooks;
     }
 
-    public Boolean rentBook(){
-        Boolean result = false;
+    public List<String> rentBook(List<String> titles, int reqNumber){
+       // Boolean result = false;
+        List<String> result = new ArrayList<>();
 
+        for (String title : titles) {
+            List<String> requestBooks = new ArrayList<>();
+            requestBooks = getBook(title,reqNumber);
+
+            if (requestBooks.isEmpty()) {
+                result.add("NOT_AVAILABLE");
+            } else {
+ // TODO need to be tested
+                result.add(requestBooks.get(0));
+            }
+            // fruit is an element of the `fruits` array.
+        }
 
         return result;
     }
@@ -31,7 +44,7 @@ public class Books {
 
     }
 
-    public List<RequestBook> getBook(String bookName, int requestedBooks) {
+    public List<String> getBook(String bookName, int requestedBooks) {
         StringBuilder sb =
                 new StringBuilder("SELECT * FROM ").append(TABLE_NAME).append(" WHERE book_name=").append(bookName);
 
@@ -39,16 +52,11 @@ public class Books {
         //  ResultSet rs = execute(query); why not work?
         ResultSet rs = session.execute(query);
 
-        List<RequestBook> requestBooks = new ArrayList<>();
+        List<String> requestBooks = new ArrayList<>();
 
         rs.forEach(r -> {
             if (r.getInt("nr_of_free_books") > requestedBooks) {
-                requestBooks.add(new RequestBook(
-                        session,
-                        r.getInt("id_book"),
-                        r.getInt("book_name"),
-                        r.getInt("nr_of_free_books"),
-                        requestedBooks));
+                requestBooks.add(r.getString("id_book"));
             } else {
                 //jakies info ze nie znalazl
             }

@@ -20,18 +20,24 @@ public class Reader implements Runnable {
         try {
             //check if dostepne
 
-            String title = titles.get(generator.nextInt(4));
-            int numberOf = generator.nextInt(20);
+            //String title = titles.get(generator.nextInt(4));
+            //int numberOf = generator.nextInt(20);
 
             //WTF?!
-            List<RequestBook> requestBooks = new ArrayList<>();
-            requestBooks = book.getBook(title, numberOf);
+           // List<RequestBook> requestBooks = new ArrayList<>();
+           // requestBooks = book.getBook(title, numberOf);
 
-            if(requestBooks.isEmpty()) {// odrzucamy wyporzycenie
+
+           // if(requestBooks.isEmpty()) {// odrzucamy wyporzycenie
                 //break;
-            } else { ///wyporzyczamy jeżeli są dostępne WSZYSTKIE
+          //  } else { ///wyporzyczamy jeżeli są dostępne WSZYSTKIE
                 //do staff
-            }
+           // }
+
+            String requestRet[] = new String[10];
+
+            requestRet = book.
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

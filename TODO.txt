@@ -12,6 +12,9 @@ TODO:
     - jakies ładne statystyki do wywalenia zeby wszyscy byli szczesliwi i podziwiali piekne efekty
 - Testy
 
+TODO 2:
+- Testnąć w Books to
+
 
 REQUEST_TABLE:
  - id uuid,
