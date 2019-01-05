@@ -8,6 +8,8 @@ public class Main {
         final int checkDelay = 100; // delay to make it slower a little
         final int randomizerBooks = 3;
 
+
+
         Backend backend = new Backend("config.properties");
         //srds.books/src/main/resources/config.properties  ------śćieżka
 
