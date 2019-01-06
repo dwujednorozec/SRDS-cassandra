@@ -53,7 +53,7 @@ public class Books {
         requestID = UUID.randomUUID();
 
         for (int i=0;i<(numberOfTitles);i++){
-            RequestBook requestBook = new RequestBook(session,requestID,Integer.valueOf(result.get(i)),idUser,numberOfBooks.get(i));
+            RequestBook requestBook = new RequestBook(session,requestID,Integer.valueOf(result.get(i)),idUser,numberOfBooks.get(i),false);
             requestBook.saveRequest();
         }
 
@@ -69,7 +69,8 @@ public class Books {
         //INACZEJ!!!: select * form request where UUID = zapisane_my_last_UUID i potem wpisac z tego albo zrobic strukture jakas gdzie to bedzie zapisane tu... nwm pomysli sie
 
         for (int i=0;i<(numberOfTitles);i++) {
-            RequestBook requestBook = new RequestBook(session, requestID, Integer.valueOf(result.get(i)), lastUserId, -1*numberOfBooks.get(i));
+            RequestBook requestBook = new RequestBook(session, requestID, Integer.valueOf(result.get(i)), lastUserId, numberOfBooks.get(i),true);
+           // inaczej tego requesta trza dac
             requestBook.saveRequest();
         }
 

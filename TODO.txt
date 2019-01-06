@@ -14,6 +14,7 @@ TODO:
 
 TODO 2:
 - Testnąć w Books to
+- NEW: dopisalem nowa rubryke do request table trzeba przystosowac reszte kodu do tego
 
 
 REQUEST_TABLE:
