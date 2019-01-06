@@ -7,21 +7,21 @@ public class CassandraTableModel {
     public CassandraTableModel(Session session) {
         this.session = session;
     }
-//Rozkminić tableName !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void createRequestTable(String tableName) {  
+    public void createRequestTable(String tableName) {
         StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(tableName).append("(")
                 .append("id uuid, ")
                 .append("id_book int,")
                 .append("id_user int,")
+                .append("req_books int")
                 .append("timestamp bigint,")
                 .append("PRIMARY KEY (id, id_book));");
 
         String query = sb.toString();
         session.execute(query);
     }
-//Rozkminić tableName !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void createBookTable(String tableName) {  
+
+    public void createBookTable(String tableName) {
         StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(tableName).append("(")
                 .append("id_book int, ")

@@ -66,8 +66,10 @@ public class Books {
         //trzeba zrobic jakas globalna dla klasy (tej klasy) strukture (lista po klasie? set?) ktora bedzie przechowywac co kto wypozyczyl
         //do dopracowania troszke bo moze cos nie dzialac (na szybko dane wjebane do poprawki tez zeby bylo ladniej)
 
+        //INACZEJ!!!: select * form request where UUID = zapisane_my_last_UUID i potem wpisac z tego albo zrobic strukture jakas gdzie to bedzie zapisane tu... nwm pomysli sie
+
         for (int i=0;i<(numberOfTitles);i++) {
-            RequestBook requestBook = new RequestBook(session, requestID, Integer.valueOf(result.get(i)), lastUserId, numberOfBooks.get(i));
+            RequestBook requestBook = new RequestBook(session, requestID, Integer.valueOf(result.get(i)), lastUserId, -1*numberOfBooks.get(i));
             requestBook.saveRequest();
         }
 
