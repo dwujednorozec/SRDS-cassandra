@@ -50,7 +50,7 @@ public class Books {
         }
 
 
-        //TODO try to reserve and check after few sec
+        //TODO test this and also add wait before this line ^
         requestID = UUID.randomUUID();
 
         for (int i=0;i<(numberOfTitles);i++){
@@ -58,13 +58,16 @@ public class Books {
             requestBook.saveRequest();
         }
 
-        CheckBook checkBook = new CheckBook(session,requestID,result,idUser,numberOfBooks,false);
+        CheckBook checkBook = new CheckBook(session,requestID,idUser);
 
-        //wait nad check dopisac
+        if (checkBook.CheckApproved(result)){
+            return true;
+            //dostal ksiazke i sie bawi
+        }else{
+            return false;
+            //sad panda nie dostal
+        }
 
-
-
-        return true;
     }
 
     public void returnBook(){
@@ -75,7 +78,7 @@ public class Books {
 
         for (int i=0;i<(numberOfTitles);i++) {
             RequestBook requestBook = new RequestBook(session, requestID, Integer.valueOf(result.get(i)), lastUserId, numberOfBooks.get(i),true);
-           // inaczej tego requesta trza dac
+           // inaczej tego requesta trza dac, on musi edytowac stary wpis i zmienic tylko returned... i timestampa?
             requestBook.saveRequest();
         }
 

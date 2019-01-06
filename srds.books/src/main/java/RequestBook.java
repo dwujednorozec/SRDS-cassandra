@@ -1,12 +1,5 @@
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
-import static com.datastax.driver.core.schemabuilder.SchemaBuilder.createTable;
 
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -34,7 +27,7 @@ public class RequestBook extends CassandraTableModel {
         createRequestTable(TABLE_NAME);
 
         StringBuilder sb = new StringBuilder("INSERT INTO ")
-                .append(TABLE_NAME).append("(id, id_book, id_user, req_books, timestamp)")
+                .append(TABLE_NAME).append("(id, id_book, id_user, req_books, returned, timestamp)")
                 .append("VALUES (").append(requestId)
                 .append(", ").append(id_book)
                 .append(", ").append(id_user)
@@ -47,6 +40,21 @@ public class RequestBook extends CassandraTableModel {
         execute(query);
     }
 
+    public void saveRetrunRequest() {
+        createRequestTable(TABLE_NAME);
 
+        StringBuilder sb = new StringBuilder("INSERT INTO ")
+                .append(TABLE_NAME).append("(id, id_book, id_user, req_books, returned, timestamp)")
+                .append("VALUES (").append(requestId)
+                .append(", ").append(id_book)
+                .append(", ").append(id_user)
+                .append(", ").append(requestedBooks)
+                .append(". ").append(returned)
+                .append(", ").append(System.currentTimeMillis())
+                .append(");");
+
+        String query = sb.toString();
+        execute(query);
+    }
 
 }

@@ -12,31 +12,17 @@ import java.util.UUID;
 public class CheckBook extends CassandraTableModel{
     private static final String TABLE_NAME = "BookRequest";
     private UUID requestId;
-//    private List<Integer> id_book;
     private int id_user;
-//    private List<Integer> requestedBooks;
     private long timestamp;
     private boolean returned;
     private int single_id_book;
     private int single_requestedBooks;
 
 
-//    public CheckBook(Session session, UUID requestId, List<Integer> id_book, int id_user, List<Integer> requestedBooks, boolean returned) {
-//        super(session);
-//        this.requestId = requestId;
-//        this.id_book = id_book;
-//        this.id_user = id_user;
-//        this.requestedBooks = requestedBooks;
-//        this.returned = returned;
-//    }
-
-    public CheckBook(Session session, UUID requestId, int id_book, int id_user, int requestedBooks, boolean returned) {
+    public CheckBook(Session session, UUID requestId, int id_user) {
         super(session);
         this.requestId = requestId;
-        this.single_id_book = id_book;
         this.id_user = id_user;
-        this.single_requestedBooks = requestedBooks;
-        this.returned = returned;
     }
 
     public CheckBook(Session session, UUID requestId, int id_book, int id_user, int requestedBooks, boolean returned, long timestamp) {
@@ -68,12 +54,13 @@ public class CheckBook extends CassandraTableModel{
 
         String query = sb.toString();
         ResultSet rs = execute(query);
-        //StringBuilder builder = new StringBuilder();
         int totalBooks = 0;
 
-        for (Row row : rs) {
-            totalBooks = row.getInt("total_books");
-        }
+        totalBooks = rs.one().getInt("total_books");
+
+//        for (Row row : rs) {
+//            totalBooks = row.getInt("total_books");
+//        }
 
         List<CheckBook> requestBooks;
         requestBooks = getRelevant(id_book);
