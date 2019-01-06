@@ -10,7 +10,7 @@ import java.util.UUID;
 public class Books {
     private UUID requestID;
     private static final String TABLE_NAME = "Books";
-    List<String> result = new ArrayList<>();
+    List<Integer> result = new ArrayList<>();
     List<Integer> numberOfBooks = new ArrayList<>(); // ilosc ksiazek jakie zarzadal reader
  //   private String bookName;
     private Session session;
@@ -25,7 +25,7 @@ public class Books {
      //   this.requestedBooks = requestedBooks;
     }
 
-    public List<String> rentBook(List<String> titles,int idUser){
+    public Boolean rentBook(List<String> titles,int idUser){
        // Boolean result = false;
         numberOfTitles = titles.size()/2;
         lastUserId = idUser;
@@ -36,18 +36,19 @@ public class Books {
             i++;
 
             if (requestBooks.isEmpty()) {
-                result.add("NOT_AVAILABLE");
+                result.add(-1);
                 numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
             } else {
  // TODO need to be tested
-                result.add(requestBooks.get(0));
+                result.add(Integer.valueOf(requestBooks.get(0)));
                 numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
             }
         }
 
-        if (result.contains("NOT_AVAILABLE")) {
-            return result;
+        if (result.contains(-1)) {
+            return false;
         }
+
 
         //TODO try to reserve and check after few sec
         requestID = UUID.randomUUID();
@@ -57,9 +58,13 @@ public class Books {
             requestBook.saveRequest();
         }
 
+        CheckBook checkBook = new CheckBook(session,requestID,result,idUser,numberOfBooks,false);
+
         //wait nad check dopisac
 
-        return result;
+
+
+        return true;
     }
 
     public void returnBook(){

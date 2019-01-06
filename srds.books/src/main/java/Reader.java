@@ -5,7 +5,8 @@ import java.util.Random;
 public class Reader implements Runnable {
     private List<String> titles;
     private List<String> myTitles = new ArrayList<>();
-    private List<String> requestRet = new ArrayList<>();
+   // private List<String> requestRet = new ArrayList<>();
+    private boolean requestRet;
     private int id;
     private Books book;
     private int counter = 10000;
