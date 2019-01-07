@@ -2,7 +2,7 @@ public class Stats {
     private final int wypozyczone = 0;
     private final int niewyporzyczone = 0;
 
-
+//koment
     public void showStats() {
       /*  System.out.println("happyClients = "+happyClients);
         System.out.println("sadClients = "+sadClients);

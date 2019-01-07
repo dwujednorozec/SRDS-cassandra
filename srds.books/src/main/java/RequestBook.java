@@ -2,7 +2,7 @@ import com.datastax.driver.core.Session;
 
 import java.util.UUID;
 
-
+//koment
 public class RequestBook extends CassandraTableModel {
     private static final String TABLE_NAME = "BookRequest";
     private UUID requestId;

@@ -3,7 +3,7 @@ import com.datastax.driver.core.Session;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//koment
 public class Insertbooks extends CassandraTableModel{
  //   private Session session;
     private static final String TABLE_NAME = "allbooks";

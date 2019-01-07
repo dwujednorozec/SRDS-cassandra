@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+//koment
 public class Reader implements Runnable {
     private List<String> titles;
     private List<String> myTitles = new ArrayList<>();

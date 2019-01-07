@@ -8,7 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
-
+//koment
 public class CheckBook extends CassandraTableModel{
     private static final String TABLE_NAME = "BookRequest";
     private UUID requestId;

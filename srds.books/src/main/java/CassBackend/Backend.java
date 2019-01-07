@@ -7,7 +7,7 @@ import com.datastax.driver.core.Session;
 
 import java.io.IOException;
 import java.util.Properties;
-
+//komet
 public class Backend {
     private Session session;
 

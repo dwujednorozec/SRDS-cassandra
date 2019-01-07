@@ -2,7 +2,7 @@ import CassBackend.Backend;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;
 
-
+//koment
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
