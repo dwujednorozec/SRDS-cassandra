@@ -42,6 +42,7 @@ Biore:
 
 TODO PART 3:
 
+    - ej, to nie dziala z ta iloscia dostepnych FIX IT! or kill.. it...
     - YEY
     - YEY 2!
     - randomizowanie tytulow leci w chuja trza to naprawic

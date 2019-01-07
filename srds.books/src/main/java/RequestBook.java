@@ -37,6 +37,7 @@ public class RequestBook extends CassandraTableModel {
                 .append(");");
 
         String query = sb.toString();
+        System.out.println(query);
         execute(query);
     }
 

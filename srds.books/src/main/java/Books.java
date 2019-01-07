@@ -22,6 +22,7 @@ public class Books {
         //this.bookName = bookName;
         //this.session = session;
         this.session = backend.getSession();
+        requestID = UUID.randomUUID();
      //   this.requestedBooks = requestedBooks;
     }
 
@@ -54,19 +55,32 @@ public class Books {
 
 
         //TODO test this and also add wait before this line ^
-        requestID = UUID.randomUUID();
+
 
         for (int i=0;i<(numberOfTitles);i++){
             RequestBook requestBook = new RequestBook(session,requestID,result.get(i),idUser,numberOfBooks.get(i),false);
             requestBook.saveRequest();
         }
 
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         CheckBook checkBook = new CheckBook(session,requestID,idUser);
 
         if (checkBook.CheckApproved(result,new_titles)){
+            System.out.println("DOSTALEM");
             return true;
             //dostal ksiazke i sie bawi
         }else{
+            System.out.println("NIE_DOSTALEM");
+            for (int i=0;i<(numberOfTitles);i++) {
+                RequestBook requestBook = new RequestBook(session, requestID, result.get(i), lastUserId, 0,true);
+                requestBook.saveRequest();
+            }
+
             return false;
             //sad panda nie dostal
         }
@@ -74,13 +88,13 @@ public class Books {
     }
 
     public void returnBook(){
-        //trzeba zrobic jakas globalna dla klasy (tej klasy) strukture (lista po klasie? set?) ktora bedzie przechowywac co kto wypozyczyl
+        //trzeba zrobic jakas globalna dla klasy (tej klasy) strukture (lista po klasie? set?) ktora bedzie przechowywac co kto wypozyczyl DONE
         //do dopracowania troszke bo moze cos nie dzialac (na szybko dane wjebane do poprawki tez zeby bylo ladniej)
 
         //INACZEJ!!!: select * form request where UUID = zapisane_my_last_UUID i potem wpisac z tego albo zrobic strukture jakas gdzie to bedzie zapisane tu... nwm pomysli sie
 
         for (int i=0;i<(numberOfTitles);i++) {
-            RequestBook requestBook = new RequestBook(session, requestID, Integer.valueOf(result.get(i)), lastUserId, numberOfBooks.get(i),true);
+            RequestBook requestBook = new RequestBook(session, requestID, result.get(i), lastUserId, numberOfBooks.get(i),true);
            // inaczej tego requesta trza dac, on musi edytowac stary wpis i zmienic tylko returned... i timestampa?
             requestBook.saveRequest();
         }

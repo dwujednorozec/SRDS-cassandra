@@ -38,7 +38,7 @@ public class CheckBook extends CassandraTableModel{
     public boolean CheckApproved(List<Integer> id_book,List<String> books_name){
         //jakas lista na wejscie i w for each dac wywolanie singla
 
-        for (int i=0;i<=id_book.size();i++){
+        for (int i=0;i<id_book.size();i++){
 
             if (!singleCheckApproved(id_book.get(i),books_name.get(i))){
                 return false;
@@ -70,7 +70,17 @@ public class CheckBook extends CassandraTableModel{
         for (CheckBook requestBook : requestBooks){
             if (totalBooks >= requestBook.single_requestedBooks) {
                 totalBooks -= requestBook.single_requestedBooks;
-                if (requestId == requestBook.requestId){
+
+
+                String temp;
+                String temp2;
+                temp = requestId.toString();
+                temp2 = requestBook.requestId.toString();
+                System.out.println(temp);
+                System.out.println(temp2);
+                System.out.println("Comparing two UUIDs: "+temp.compareTo(temp2));
+
+                if (requestId.equals(requestBook.requestId)){
                         partialDecision = true;
                         break;
                 }
@@ -103,7 +113,11 @@ public class CheckBook extends CassandraTableModel{
                         r.getInt("req_books"),
                         r.getBool("returned"),
                         r.getLong("timestamp")));
+                System.out.println("DATABASE");
+                System.out.println(r.getUUID("id"));
+                System.out.println(requestId);
             }
+
         });
 
 

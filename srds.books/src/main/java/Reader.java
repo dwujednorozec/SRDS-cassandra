@@ -7,6 +7,7 @@ import java.util.Random;
 public class Reader implements Runnable {
     private List<String> titles;
     private List<String> myTitles = new ArrayList<>();
+    private int maxBookReqNumber;
    // private List<String> requestRet = new ArrayList<>();
     private boolean requestRet;
     private int id;
@@ -14,8 +15,9 @@ public class Reader implements Runnable {
     private int counter = 10000;
     private int randomizerBooks;
 
-    public Reader(Backend backend, List<String> titles, int randomizerBooks) {
+    public Reader(Backend backend, List<String> titles, int randomizerBooks, int maxBookReqNumber) {
         this.id = counter++;
+        this.maxBookReqNumber = maxBookReqNumber;
         this.book = book;
         this.titles = titles;
         this.randomizerBooks = randomizerBooks;
@@ -41,32 +43,42 @@ public class Reader implements Runnable {
                 //do staff
            // }
             int reqNumber;
-            reqNumber = generator.nextInt(20);
-
-            for (int i=0;i<=reqNumber;i++){
-                myTitles.add(titles.get(generator.nextInt(randomizerBooks)));
+            reqNumber = generator.nextInt(maxBookReqNumber);
+            int temp;
+            List<Integer> lastrandoms = new ArrayList<>();
+            for (int i=0;i<=reqNumber;i++) {
+                do {
+                    temp = generator.nextInt(randomizerBooks);
+                }while (lastrandoms.contains(temp));
+                lastrandoms.add(temp);
+                myTitles.add(titles.get(temp));
                 myTitles.add(Integer.toString(generator.nextInt(20)));
                 //przerob to na liste w liscie czy cos zeby mogl miec kilka pozycji kazdej
                 //albo zostaw tak na retarda jak jest
                 //dobre miejsce na staty
             }
 
+            Thread.sleep(generator.nextInt(2000));
+
             requestRet = book.rentBook(myTitles,id);
 
-            Thread.sleep(generator.nextInt(100)); //nie wiem czy to sec czy ms do sprawdzenia
-            // nie wiem ile chcicałeś ustalić ale to jest w ms
-            book.returnBook();
+            Thread.sleep(generator.nextInt(3000));
 
+            if (requestRet) {
+                book.returnBook();
+            }
+
+            System.exit(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     //uzupelnic args
-    public static void createReaderAndGo (int count, Backend backend, List<String> titles, int randomizerBooks) {
+    public static void createReaderAndGo (int count, Backend backend, List<String> titles, int randomizerBooks, int maxBookReqNumber) {
         ArrayList<Thread> threads = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            Thread thread = new Thread(new Reader(backend, titles, randomizerBooks));
+            Thread thread = new Thread(new Reader(backend, titles, randomizerBooks, maxBookReqNumber));
             thread.start();
             threads.add(thread);
         }

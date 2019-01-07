@@ -3,9 +3,10 @@ import CassBackend.Backend;
 //koment
 public class Main {
     public static void main(String[] args) {
-        final int clientCount = 2;
+        final int clientCount = 1;
         final int simulationTime = 150;
         final int checkDelay = 100; // delay to make it slower a little
+        final int maxBookReqNumber = 2;
 
 
 
@@ -26,7 +27,7 @@ public class Main {
        // Books books = new Books(backend);
 
         final int randomizerBooks = insertbooks.getTitles().size();
-        Reader.createReaderAndGo(clientCount, backend, insertbooks.getTitles(), randomizerBooks);
+        Reader.createReaderAndGo(clientCount, backend, insertbooks.getTitles(), randomizerBooks, maxBookReqNumber);
 
 
     }
