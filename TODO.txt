@@ -11,6 +11,7 @@ TODO:
         - usuniecie wpisu>??? jak to zrobi??
     - jakies ładne statystyki do wywalenia zeby wszyscy byli szczesliwi i podziwiali piekne efekty
 - Testy
+- request book =0 returned =true
 
 TODO 2:
 - Testnąć w Books to
