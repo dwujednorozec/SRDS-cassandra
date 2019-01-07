@@ -1,3 +1,5 @@
+import CassBackend.Backend;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,11 +14,12 @@ public class Reader implements Runnable {
     private int counter = 10000;
     private int randomizerBooks;
 
-    public Reader(Books book, List<String> titles, int randomizerBooks) {
+    public Reader(Backend backend, List<String> titles, int randomizerBooks) {
         this.id = counter++;
         this.book = book;
         this.titles = titles;
         this.randomizerBooks = randomizerBooks;
+        this.book = new Books(backend);
     }
 
     public void run(){
@@ -60,10 +63,10 @@ public class Reader implements Runnable {
     }
 
     //uzupelnic args
-    public static void createReaderAndGo (int count, Books book, List<String> titles, int randomizerBooks) {
+    public static void createReaderAndGo (int count, Backend backend, List<String> titles, int randomizerBooks) {
         ArrayList<Thread> threads = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            Thread thread = new Thread(new Reader(book, titles, randomizerBooks));
+            Thread thread = new Thread(new Reader(backend, titles, randomizerBooks));
             thread.start();
             threads.add(thread);
         }

@@ -23,9 +23,9 @@ public class Main {
         insertbooks.saveBooks(3,"Try to catch",100,100);
         insertbooks.saveBooks(4,"The Shining",50,50);
 
-        Books books = new Books(backend);
+       // Books books = new Books(backend);
 
-        Reader.createReaderAndGo(clientCount, books, insertbooks.getTitles(), randomizerBooks);
+        Reader.createReaderAndGo(clientCount, backend, insertbooks.getTitles(), randomizerBooks);
 
 
     }
