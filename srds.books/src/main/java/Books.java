@@ -10,8 +10,8 @@ import java.util.UUID;
 public class Books {
     private UUID requestID;
     private static final String TABLE_NAME = "allbooks";
-    List<Integer> result = new ArrayList<>();
-    List<Integer> numberOfBooks = new ArrayList<>(); // ilosc ksiazek jakie zarzadal reader
+    private List<Integer> result = new ArrayList<>();
+    private List<Integer> numberOfBooks = new ArrayList<>(); // ilosc ksiazek jakie zarzadal reader
  //   private String bookName;
     private Session session;
     private int numberOfTitles;
