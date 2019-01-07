@@ -1,6 +1,7 @@
 import com.datastax.driver.core.*;
 
 
+
 public class CassandraTableModel {
     protected Session session;
 
@@ -33,6 +34,7 @@ public class CassandraTableModel {
                 .append("PRIMARY KEY (id_book, book_name));");
 
         String query = sb.toString();
+        System.out.println(query);
         session.execute(query);
 
     }

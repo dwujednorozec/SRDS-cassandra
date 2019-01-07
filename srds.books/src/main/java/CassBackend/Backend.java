@@ -26,7 +26,7 @@ public class Backend {
         session = cluster.connect();
         StringBuilder sb =
                 new StringBuilder("CREATE KEYSPACE IF NOT EXISTS ")
-                        .append("Books_Keyspace").append(" WITH replication = {")
+                        .append("books").append(" WITH replication = {")
                         .append("'class':'").append("SimpleStrategy")
                         .append("','replication_factor':").append(3)
                         .append("};");

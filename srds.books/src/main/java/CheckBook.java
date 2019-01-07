@@ -50,7 +50,7 @@ public class CheckBook extends CassandraTableModel{
     public boolean singleCheckApproved(int id_book){
         //todo
 
-        StringBuilder sb = new StringBuilder("SELECT total_books FROM BookRequest WHERE id_book = ").append(id_book);
+        StringBuilder sb = new StringBuilder("SELECT total_books FROM allbooks WHERE id_book = ").append(id_book);
 
         String query = sb.toString();
         ResultSet rs = execute(query);

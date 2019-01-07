@@ -3,7 +3,7 @@ import CassBackend.Backend;
 
 public class Main {
     public static void main(String[] args) {
-        final int clientCount = 150;
+        final int clientCount = 2;
         final int simulationTime = 150;
         final int checkDelay = 100; // delay to make it slower a little
         final int randomizerBooks = 3;
