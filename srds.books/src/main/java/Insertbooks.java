@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Insertbooks extends CassandraTableModel{
  //   private Session session;
-    private static final String TABLE_NAME = "BookRequest";
+    private static final String TABLE_NAME = "allbooks";
     private List<String> titles = new ArrayList<String>();
 //    private int id_book;
 //    private String book_name;
