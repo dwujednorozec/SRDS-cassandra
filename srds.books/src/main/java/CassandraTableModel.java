@@ -1,6 +1,9 @@
 import com.datastax.driver.core.*;
 
-
+import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.ConsistencyLevel;
+import com.datastax.driver.core.QueryOptions;
+import com.datastax.driver.core.Session;
 
 public class CassandraTableModel {
     protected Session session;
