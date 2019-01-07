@@ -30,10 +30,10 @@ public class Books {
         numberOfTitles = titles.size()/2;
         lastUserId = idUser;
 
-        for (int i=0;i<titles.size();i++) {
+        for (int i=0;i<titles.size();i+=2) {
             List<Integer> requestBooks;
             requestBooks = getBook(titles.get(i), 1+Integer.valueOf(titles.get(i+1)));
-            i++;
+            //i++;
 
             if (requestBooks.isEmpty()) {
                 result.add(-1);
