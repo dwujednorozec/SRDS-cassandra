@@ -32,7 +32,7 @@ public class CassandraTableModel {
         StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ")
                 .append(tableName).append("(")
                 .append("id_book int,")
-                .append("book_name String, ")
+                .append("book_name text, ")
                 .append("nr_of_free_books int,")
                 .append("total_books int,")
                 .append("PRIMARY KEY (id_book, book_name));");
