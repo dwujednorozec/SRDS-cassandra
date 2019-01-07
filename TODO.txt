@@ -40,7 +40,7 @@ REQUEST_TABLE:
 Biore:
     - Reader.java i Books.java i robie tam mambo jambo transparentne jebando
 
-TODO PART 2:
+TODO PART 3:
 
     - YEY
     - YEY 2!
