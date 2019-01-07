@@ -53,8 +53,9 @@ public class CheckBook extends CassandraTableModel{
         StringBuilder sb = new StringBuilder("SELECT total_books FROM allbooks WHERE id_book = ").append(id_book).append(" AND book_name='").append(book_name).append("'");
 
         String query = sb.toString();
+        System.out.println(query);
         ResultSet rs = execute(query);
-        int totalBooks = 0;
+        int totalBooks ;
 
         totalBooks = rs.one().getInt("total_books");
 
@@ -81,12 +82,13 @@ public class CheckBook extends CassandraTableModel{
     }
 
     private List<CheckBook> getRelevant (int idBook){
+        //TODO jak bedzie pusta tabela to sie wyjebie wszystko chyba
 
         //nie wiem czy nie wyjebac tego dostepne booki i liczyc na bierzaco
 
         List<CheckBook> requestBooks = new ArrayList<>();
 
-        StringBuilder sb = new StringBuilder("SELECT * FROM ").append(TABLE_NAME).append(" WHERE id = ").append(idBook);
+        StringBuilder sb = new StringBuilder("SELECT * FROM ").append(TABLE_NAME).append(" WHERE id_book = ").append(idBook);
 
         String query = sb.toString();
         ResultSet rs = execute(query);
