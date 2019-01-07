@@ -39,7 +39,6 @@ public class CassandraTableModel {
                 //.append("PRIMARY KEY (id_book));");
 
         String query = sb.toString();
-        System.out.println(query);
         session.execute(query);
 
     }

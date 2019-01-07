@@ -16,13 +16,9 @@ public class Main {
         Insertbooks insertbooks = new Insertbooks(backend.getSession());
 
         //insertbooks.insertbookByTitle();
-        System.out.println("wut");
 
         insertbooks.saveBooks(0,"Potop",50,50);
-        System.out.println("wut");
-
         insertbooks.saveBooks(1,"Dziady",100,100);
-        System.out.println("wut");
         insertbooks.saveBooks(2,"Java testing",50,50);
         insertbooks.saveBooks(3,"Try to catch",100,100);
         insertbooks.saveBooks(4,"The Shining",50,50);

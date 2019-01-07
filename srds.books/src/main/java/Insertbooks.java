@@ -27,9 +27,8 @@ public class Insertbooks extends CassandraTableModel{
                 .append(");");
 
         String query = sb.toString();
-        System.out.println(query);
         execute(query);
-        titles.add("book_name");
+        titles.add(book_name);
     }
 
     public List<String> getTitles() {
