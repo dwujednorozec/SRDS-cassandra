@@ -39,3 +39,12 @@ REQUEST_TABLE:
 
 Biore:
     - Reader.java i Books.java i robie tam mambo jambo transparentne jebando
+
+TODO PART 2:
+
+    - YEY
+    - YEY 2!
+    - usuwanie tak zeby bylo request book = 0 returned = true
+    - returnowanie
+    - jak kurwa zrobic wait 100 sec + random(100)
+    - DA FAQ IS THAT!
