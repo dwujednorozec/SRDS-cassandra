@@ -32,7 +32,7 @@ public class RequestBook extends CassandraTableModel {
                 .append(", ").append(id_book)
                 .append(", ").append(id_user)
                 .append(", ").append(requestedBooks)
-                .append(". ").append(returned)
+                .append(", ").append(returned)
                 .append(", ").append(System.currentTimeMillis())
                 .append(");");
 
@@ -49,7 +49,7 @@ public class RequestBook extends CassandraTableModel {
                 .append(", ").append(id_book)
                 .append(", ").append(id_user)
                 .append(", ").append(requestedBooks)
-                .append(". ").append(returned)
+                .append(", ").append(returned)
                 .append(", ").append(System.currentTimeMillis())
                 .append(");");
 

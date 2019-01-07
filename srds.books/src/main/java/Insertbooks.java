@@ -19,14 +19,15 @@ public class Insertbooks extends CassandraTableModel{
         createBookTable(TABLE_NAME);
 
         StringBuilder sb = new StringBuilder("INSERT INTO ")
-                .append(TABLE_NAME).append("(id_book, book_name, nr_of_free_books, total_books)")
+                .append(TABLE_NAME).append(" (id_book, book_name, nr_of_free_books, total_books)")
                 .append("VALUES (").append(id_book)
-                .append(", ").append(book_name)
+                .append(", '").append(book_name).append("'")
                 .append(", ").append(nr_of_free_books)
                 .append(", ").append(total_books)
                 .append(");");
 
         String query = sb.toString();
+        System.out.println(query);
         execute(query);
         titles.add("book_name");
     }
