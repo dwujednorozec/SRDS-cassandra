@@ -31,7 +31,7 @@ public class Books {
         lastUserId = idUser;
 
         for (int i=0;i<titles.size();i++) {
-            List<String> requestBooks;
+            List<Integer> requestBooks;
             requestBooks = getBook(titles.get(i), 1+Integer.valueOf(titles.get(i+1)));
             i++;
 
@@ -40,7 +40,7 @@ public class Books {
                 numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
             } else {
  // TODO need to be tested
-                result.add(Integer.valueOf(requestBooks.get(0)));
+                result.add(requestBooks.get(0));
                 numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
             }
         }
@@ -86,19 +86,20 @@ public class Books {
         numberOfBooks.clear();
     }
 
-    public List<String> getBook(String bookName, int requestedBooks) {
+    public List<Integer> getBook(String bookName, int requestedBooks) {
         StringBuilder sb =
-                new StringBuilder("SELECT * FROM ").append(TABLE_NAME).append(" WHERE book_name=").append(bookName);
+                new StringBuilder("SELECT * FROM ").append(TABLE_NAME).append(" WHERE book_name='").append(bookName).append("'");
 
         String query = sb.toString();
         //  ResultSet rs = execute(query); why not work?
+        session.execute(query);
         ResultSet rs = session.execute(query);
 
-        List<String> requestBooks = new ArrayList<>();
+        List<Integer> requestBooks = new ArrayList<>();
 
         rs.forEach(r -> {
             if (r.getInt("nr_of_free_books") > requestedBooks) {
-                requestBooks.add(r.getString("id_book"));
+                requestBooks.add(r.getInt("id_book"));
             } else {
                 //jakies info ze nie znalazl
             }
