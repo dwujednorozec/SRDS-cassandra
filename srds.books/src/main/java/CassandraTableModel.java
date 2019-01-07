@@ -35,7 +35,7 @@ public class CassandraTableModel {
                 .append("book_name text,")
                 .append("nr_of_free_books int,")
                 .append("total_books int,")
-                .append("PRIMARY KEY (book_name));");
+                .append("PRIMARY KEY (book_name, id_book));");
                 //.append("PRIMARY KEY (id_book));");
 
         String query = sb.toString();

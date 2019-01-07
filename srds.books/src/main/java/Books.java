@@ -28,7 +28,9 @@ public class Books {
     public Boolean rentBook(List<String> titles,int idUser){
        // Boolean result = false;
         numberOfTitles = titles.size()/2;
+        List<String> new_titles = new ArrayList<>();
         lastUserId = idUser;
+
 
         for (int i=0;i<titles.size();i+=2) {
             List<Integer> requestBooks;
@@ -41,6 +43,7 @@ public class Books {
             } else {
  // TODO need to be tested
                 result.add(requestBooks.get(0));
+                new_titles.add(titles.get(i));
                 numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
             }
         }
@@ -54,13 +57,13 @@ public class Books {
         requestID = UUID.randomUUID();
 
         for (int i=0;i<(numberOfTitles);i++){
-            RequestBook requestBook = new RequestBook(session,requestID,Integer.valueOf(result.get(i)),idUser,numberOfBooks.get(i),false);
+            RequestBook requestBook = new RequestBook(session,requestID,result.get(i),idUser,numberOfBooks.get(i),false);
             requestBook.saveRequest();
         }
 
         CheckBook checkBook = new CheckBook(session,requestID,idUser);
 
-        if (checkBook.CheckApproved(result)){
+        if (checkBook.CheckApproved(result,new_titles)){
             return true;
             //dostal ksiazke i sie bawi
         }else{

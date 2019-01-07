@@ -35,22 +35,22 @@ public class CheckBook extends CassandraTableModel{
         this.timestamp = timestamp;
     }
 
-    public boolean CheckApproved(List<Integer> id_book){
+    public boolean CheckApproved(List<Integer> id_book,List<String> books_name){
         //jakas lista na wejscie i w for each dac wywolanie singla
 
         for (int i=0;i<=id_book.size();i++){
 
-            if (!singleCheckApproved(id_book.get(i))){
+            if (!singleCheckApproved(id_book.get(i),books_name.get(i))){
                 return false;
             }
         }
         return true;
     }
 
-    public boolean singleCheckApproved(int id_book){
+    public boolean singleCheckApproved(int id_book, String book_name){
         //todo
 
-        StringBuilder sb = new StringBuilder("SELECT total_books FROM allbooks WHERE id_book = ").append(id_book);
+        StringBuilder sb = new StringBuilder("SELECT total_books FROM allbooks WHERE id_book = ").append(id_book).append(" AND book_name='").append(book_name).append("'");
 
         String query = sb.toString();
         ResultSet rs = execute(query);
