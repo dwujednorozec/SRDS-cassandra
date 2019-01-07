@@ -44,6 +44,7 @@ TODO PART 3:
 
     - YEY
     - YEY 2!
+    - randomizowanie tytulow leci w chuja trza to naprawic
     - usuwanie tak zeby bylo request book = 0 returned = true
     - returnowanie
     - jak kurwa zrobic wait 100 sec + random(100)
