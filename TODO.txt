@@ -42,11 +42,11 @@ Biore:
 
 TODO PART 3:
 
-    - ej, to nie dziala z ta iloscia dostepnych FIX IT! or kill.. it...
+    - ej, to nie dziala z ta iloscia dostepnych FIX IT! or kill.. it... meh...
     - YEY
     - YEY 2!
-    - randomizowanie tytulow leci w chuja trza to naprawic
-    - usuwanie tak zeby bylo request book = 0 returned = true
-    - returnowanie
-    - jak kurwa zrobic wait 100 sec + random(100)
-    - DA FAQ IS THAT!
+    - randomizowanie tytulow leci w chuja trza to naprawic ✓
+    - usuwanie tak zeby bylo request book = 0 returned = true ✓
+    - returnowanie (o chuj mi tu chodzilo?)
+    - jak kurwa zrobic wait 100 sec + random(100) ✓
+    - DA FAQ IS THAT! ✓

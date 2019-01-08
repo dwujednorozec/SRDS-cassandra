@@ -12,13 +12,13 @@ public class Reader implements Runnable {
     private boolean requestRet;
     private int id;
     private Books book;
-    private int counter = 10000;
+    private static int counter = 10000;
     private int randomizerBooks;
 
     public Reader(Backend backend, List<String> titles, int randomizerBooks, int maxBookReqNumber) {
-        this.id = counter++;
+        this.id = counter;
+        counter++;
         this.maxBookReqNumber = maxBookReqNumber;
-        this.book = book;
         this.titles = titles;
         this.randomizerBooks = randomizerBooks;
         this.book = new Books(backend);
@@ -27,6 +27,7 @@ public class Reader implements Runnable {
     public void run(){
         Random generator = new Random();
         try {
+            System.out.println(this.id);
             //check if dostepne
 
             //String title = titles.get(generator.nextInt(4));
@@ -58,17 +59,17 @@ public class Reader implements Runnable {
                 //dobre miejsce na staty
             }
 
-            Thread.sleep(generator.nextInt(2000));
+            Thread.sleep(1000+generator.nextInt(2000));
 
             requestRet = book.rentBook(myTitles,id);
 
-            Thread.sleep(generator.nextInt(3000));
+            Thread.sleep(1000+generator.nextInt(3000));
 
             if (requestRet) {
                 book.returnBook();
             }
 
-            System.exit(0);
+           // System.exit(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

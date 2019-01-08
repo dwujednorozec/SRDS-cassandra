@@ -47,7 +47,7 @@ public class CheckBook extends CassandraTableModel{
         return true;
     }
 
-    public boolean singleCheckApproved(int id_book, String book_name){
+    private boolean singleCheckApproved(int id_book, String book_name){
         //todo
 
         StringBuilder sb = new StringBuilder("SELECT total_books FROM allbooks WHERE id_book = ").append(id_book).append(" AND book_name='").append(book_name).append("'");
@@ -72,13 +72,13 @@ public class CheckBook extends CassandraTableModel{
                 totalBooks -= requestBook.single_requestedBooks;
 
 
-                String temp;
-                String temp2;
-                temp = requestId.toString();
-                temp2 = requestBook.requestId.toString();
-                System.out.println(temp);
-                System.out.println(temp2);
-                System.out.println("Comparing two UUIDs: "+temp.compareTo(temp2));
+//                String temp;
+//                String temp2;
+//                temp = requestId.toString();
+//                temp2 = requestBook.requestId.toString();
+//                System.out.println(temp);
+//                System.out.println(temp2);
+//                System.out.println("Comparing two UUIDs: "+temp.compareTo(temp2));
 
                 if (requestId.equals(requestBook.requestId)){
                         partialDecision = true;
@@ -92,7 +92,6 @@ public class CheckBook extends CassandraTableModel{
     }
 
     private List<CheckBook> getRelevant (int idBook){
-        //TODO jak bedzie pusta tabela to sie wyjebie wszystko chyba
 
         //nie wiem czy nie wyjebac tego dostepne booki i liczyc na bierzaco
 
@@ -113,15 +112,14 @@ public class CheckBook extends CassandraTableModel{
                         r.getInt("req_books"),
                         r.getBool("returned"),
                         r.getLong("timestamp")));
-                System.out.println("DATABASE");
-                System.out.println(r.getUUID("id"));
-                System.out.println(requestId);
+//                System.out.println("DATABASE");
+//                System.out.println(r.getUUID("id"));
+//                System.out.println(requestId);
             }
 
         });
 
 
-        // Sort by Timestamp
         requestBooks.sort(new Comparator<CheckBook>() {
             @Override
             public int compare(CheckBook m1, CheckBook m2) {
