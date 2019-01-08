@@ -9,7 +9,6 @@ public class Reader implements Runnable {
     private List<String> myTitles = new ArrayList<>();
     private int maxBookReqNumber;
    // private List<String> requestRet = new ArrayList<>();
-    private boolean requestRet;
     private int id;
     private Books book;
     private static int counter = 10000;
@@ -26,6 +25,8 @@ public class Reader implements Runnable {
 
     public void run(){
         Random generator = new Random();
+        boolean requestRet;
+
         try {
             System.out.println(this.id);
             //check if dostepne
