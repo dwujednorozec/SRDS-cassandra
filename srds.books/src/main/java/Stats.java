@@ -1,6 +1,28 @@
+import com.datastax.driver.core.Session;
+
 public class Stats {
-    private final int wypozyczone = 0;
-    private final int niewyporzyczone = 0;
+    private static Stats INSTANCE;
+
+    private int wypozyczone = 0;
+    private int prosb = 0;
+    private int niewypozyczone = 0;
+    private int zgubiono = 0;
+
+    private void log(int id_user, String msg) {
+        System.out.println("[" + id_user + "] " + msg);
+    }
+
+    public void rent(int id_user) {
+        log(id_user, "Wypozyczylem ksiazke!");
+        wypozyczone++;
+    }
+
+    public static Stats getInstance(){
+        if(INSTANCE==null)
+            INSTANCE = new Stats();
+        return INSTANCE;
+    }
+
 
 //koment
     public void showStats() {

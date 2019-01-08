@@ -72,6 +72,7 @@ public class Books {
 
         if (checkBook.CheckApproved(result,new_titles)){
             System.out.println("DOSTALEM");
+            Stats.getInstance().rent(idUser);
             return true;
             //dostal ksiazke i sie bawi
         }else{
