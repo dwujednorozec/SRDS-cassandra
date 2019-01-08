@@ -7,7 +7,6 @@ public class Stats {
     private int wypozyczone = 0;
     private int prosb = 0;
     private int niewypozyczone = 0;
-    private int zgubiono = 0;
     private int oddano = 0;
 
     private void log(int id_user, String msg) {
@@ -45,14 +44,6 @@ public class Stats {
         System.out.println("Niewypożyczone = "+niewypozyczone);
         System.out.println("Prosby o wypożyczenie = "+prosb);
         System.out.println("Zgubiono ksiązek = "+zgubiono);
-        /*System.out.println("------\nHappy Clients:");
-        reservations.forEach(r -> System.out.print("" + r + ", "));
-        System.out.println("\n------");
-
-        System.out.println("------\nSad Clients:");
-        sad.forEach(r -> System.out.print("" + r + ", "));
-        System.out.println("\n------");
-       */
     }
 
 }

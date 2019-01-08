@@ -3,12 +3,11 @@ import CassBackend.Backend;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-//koment
+
 public class Reader implements Runnable {
     private List<String> titles;
     private List<String> myTitles = new ArrayList<>();
     private int maxBookReqNumber;
-   // private List<String> requestRet = new ArrayList<>();
     private int id;
     private Books book;
     private static int counter = 10000;
@@ -30,20 +29,6 @@ public class Reader implements Runnable {
         try {
             System.out.println(this.id);
             //check if dostepne
-
-            //String title = titles.get(generator.nextInt(4));
-            //int numberOf = generator.nextInt(20);
-
-            //WTF?!
-           // List<RequestBook> requestBooks = new ArrayList<>();
-           // requestBooks = book.getBook(title, numberOf);
-
-
-           // if(requestBooks.isEmpty()) {// odrzucamy wyporzycenie
-                //break;
-          //  } else { ///wyporzyczamy jeżeli są dostępne WSZYSTKIE
-                //do staff
-           // }
             int reqNumber;
             reqNumber = generator.nextInt(maxBookReqNumber);
             int temp;
@@ -55,9 +40,6 @@ public class Reader implements Runnable {
                 lastrandoms.add(temp);
                 myTitles.add(titles.get(temp));
                 myTitles.add(Integer.toString(generator.nextInt(20)));
-                //przerob to na liste w liscie czy cos zeby mogl miec kilka pozycji kazdej
-                //albo zostaw tak na retarda jak jest
-                //dobre miejsce na staty
             }
 
             Thread.sleep(1000+generator.nextInt(2000));
@@ -69,14 +51,10 @@ public class Reader implements Runnable {
             if (requestRet) {
                 book.returnBook();
             }
-
-           // System.exit(0);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
-    //uzupelnic args
     public static void createReaderAndGo (int count, Backend backend, List<String> titles, int randomizerBooks, int maxBookReqNumber) {
         ArrayList<Thread> threads = new ArrayList<>();
         for (int i = 0; i < count; i++) {
@@ -84,7 +62,6 @@ public class Reader implements Runnable {
             thread.start();
             threads.add(thread);
         }
-
         for (Thread thread : threads) {
             try {
                 thread.join();

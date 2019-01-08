@@ -22,7 +22,6 @@ public class CassandraTableModel {
                 .append("returned boolean,")
                 .append("timestamp bigint,")
                 .append("PRIMARY KEY (id_book, id));");
-        //nie wiem czy nie dobrze by bylo dodac returned do klucza zeby tylko przetrzymywane dawalo
 
         String query = sb.toString();
         session.execute(query);
@@ -36,7 +35,6 @@ public class CassandraTableModel {
                 .append("nr_of_free_books int,")
                 .append("total_books int,")
                 .append("PRIMARY KEY (book_name, id_book));");
-                //.append("PRIMARY KEY (id_book));");
 
         String query = sb.toString();
         session.execute(query);

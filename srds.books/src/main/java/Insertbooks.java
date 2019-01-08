@@ -10,7 +10,6 @@ public class Insertbooks extends CassandraTableModel{
 
     public Insertbooks(Session session) {
         super(session);
-
     }
 
     public void saveBooks(int id_book, String book_name, int nr_of_free_books, int total_books) {
@@ -28,7 +27,6 @@ public class Insertbooks extends CassandraTableModel{
         execute(query);
         titles.add(book_name);
     }
-
     public List<String> getTitles() {
         return titles;
     }

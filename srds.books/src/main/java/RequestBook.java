@@ -2,7 +2,6 @@ import com.datastax.driver.core.Session;
 
 import java.util.UUID;
 
-//koment
 public class RequestBook extends CassandraTableModel {
     private static final String TABLE_NAME = "BookRequest";
     private UUID requestId;
@@ -19,9 +18,6 @@ public class RequestBook extends CassandraTableModel {
         this.requestedBooks = requestedBooks;
         this.returned = returned;
     }
-
-
-// przerobienie na koszyk requestow: dodanie fora i powielanie requestu + dodanie UUID pojedynczego requestu
 
     public void saveRequest() {
         createRequestTable(TABLE_NAME);
@@ -57,5 +53,4 @@ public class RequestBook extends CassandraTableModel {
         String query = sb.toString();
         execute(query);
     }
-
 }
