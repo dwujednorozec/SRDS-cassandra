@@ -7,7 +7,7 @@ import com.datastax.driver.core.Session;
 
 import java.io.IOException;
 import java.util.Properties;
-//komet
+
 public class Backend {
     private Session session;
 
@@ -21,12 +21,15 @@ public class Backend {
         String contactPoint = properties.getProperty("contact_point");
         String keyspace = properties.getProperty("keyspace");
 
-        Cluster cluster = Cluster.builder().addContactPoint(contactPoint).withQueryOptions(new QueryOptions().setConsistencyLevel(ConsistencyLevel.ONE)).build();
+        Cluster cluster = Cluster.builder()
+                .addContactPoint(contactPoint)
+                .withQueryOptions(new QueryOptions().setConsistencyLevel(ConsistencyLevel.ONE))
+                .build();
 
         session = cluster.connect();
         StringBuilder sb =
                 new StringBuilder("CREATE KEYSPACE IF NOT EXISTS ")
-                        .append("books").append(" WITH replication = {")
+                        .append(keyspace).append(" WITH replication = {")
                         .append("'class':'").append("SimpleStrategy")
                         .append("','replication_factor':").append(3)
                         .append("};");
