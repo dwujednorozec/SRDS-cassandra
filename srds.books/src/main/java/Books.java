@@ -2,7 +2,7 @@ import CassBackend.Backend;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;
 
-//koment
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -12,22 +12,16 @@ public class Books {
     private static final String TABLE_NAME = "allbooks";
     private List<Integer> result = new ArrayList<>();
     private List<Integer> numberOfBooks = new ArrayList<>(); // ilosc ksiazek jakie zarzadal reader
- //   private String bookName;
     private Session session;
     private int numberOfTitles;
     private int lastUserId;
-  //  private int requestedBooks;
 
     public Books(Backend backend) {
-        //this.bookName = bookName;
-        //this.session = session;
         this.session = backend.getSession();
         requestID = UUID.randomUUID();
-     //   this.requestedBooks = requestedBooks;
     }
 
     public Boolean rentBook(List<String> titles,int idUser){
-       // Boolean result = false;
         numberOfTitles = titles.size()/2;
         List<String> new_titles = new ArrayList<>();
         lastUserId = idUser;
@@ -42,7 +36,6 @@ public class Books {
                 result.add(-1);
                 numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
             } else {
- // TODO need to be tested
                 result.add(requestBooks.get(0));
                 new_titles.add(titles.get(i));
                 numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
@@ -52,10 +45,6 @@ public class Books {
         if (result.contains(-1)) {
             return false;
         }
-
-
-        //TODO test this and also add wait before this line ^
-
 
         for (int i=0;i<(numberOfTitles);i++){
             RequestBook requestBook = new RequestBook(session,requestID,result.get(i),idUser,numberOfBooks.get(i),false);
@@ -71,34 +60,28 @@ public class Books {
         CheckBook checkBook = new CheckBook(session,requestID,idUser);
 
         if (checkBook.CheckApproved(result,new_titles)){
-            System.out.println("DOSTALEM");
-            Stats.getInstance().rent(idUser);
+            Stats.getInstance().rent(idUser,new_titles);
             return true;
-            //dostal ksiazke i sie bawi
         }else{
             System.out.println("NIE_DOSTALEM");
             for (int i=0;i<(numberOfTitles);i++) {
                 RequestBook requestBook = new RequestBook(session, requestID, result.get(i), lastUserId, 0,true);
                 requestBook.saveRequest();
-            }
 
+            }
+            Stats.getInstance().dontrent(idUser,new_titles);
             return false;
-            //sad panda nie dostal
         }
 
     }
 
     public void returnBook(){
-        //trzeba zrobic jakas globalna dla klasy (tej klasy) strukture (lista po klasie? set?) ktora bedzie przechowywac co kto wypozyczyl DONE
-        //do dopracowania troszke bo moze cos nie dzialac (na szybko dane wjebane do poprawki tez zeby bylo ladniej)
-
-        //INACZEJ!!!: select * form request where UUID = zapisane_my_last_UUID i potem wpisac z tego albo zrobic strukture jakas gdzie to bedzie zapisane tu... nwm pomysli sie
 
         for (int i=0;i<(numberOfTitles);i++) {
             RequestBook requestBook = new RequestBook(session, requestID, result.get(i), lastUserId, numberOfBooks.get(i),true);
-           // inaczej tego requesta trza dac, on musi edytowac stary wpis i zmienic tylko returned... i timestampa?
             requestBook.saveRequest();
         }
+        //Stats.getInstance().unrent(idUser,new_titles);
 
         result.clear();
         numberOfBooks.clear();
@@ -109,7 +92,6 @@ public class Books {
                 new StringBuilder("SELECT * FROM ").append(TABLE_NAME).append(" WHERE book_name='").append(bookName).append("'");
 
         String query = sb.toString();
-        //  ResultSet rs = execute(query); why not work?
         session.execute(query);
         ResultSet rs = session.execute(query);
 

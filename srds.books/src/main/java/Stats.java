@@ -1,4 +1,5 @@
 import com.datastax.driver.core.Session;
+import java.util.List;
 
 public class Stats {
     private static Stats INSTANCE;
@@ -12,9 +13,15 @@ public class Stats {
         System.out.println("[" + id_user + "] " + msg);
     }
 
-    public void rent(int id_user) {
-        log(id_user, "Wypozyczylem ksiazke!");
+    public void rent(int id_user, List<String> book) {
+        log(id_user, "Wypozyczylem ksiazke!{"+book+"}");
         wypozyczone++;
+    }
+
+    public void dontrent(int id_user, List<String> book) {
+        log(id_user, "Oddalem ksiazke!{"+book+"}");
+        wypozyczone--;
+        niewypozyczone++;
     }
 
     public static Stats getInstance(){
