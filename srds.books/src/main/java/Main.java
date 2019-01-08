@@ -30,6 +30,6 @@ public class Main {
         final int randomizerBooks = insertbooks.getTitles().size();
         Reader.createReaderAndGo(clientCount, backend, insertbooks.getTitles(), randomizerBooks, maxBookReqNumber);
 
-
+        Stats.getInstance().showStats();
     }
 }

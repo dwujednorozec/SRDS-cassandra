@@ -11,7 +11,7 @@ public class Books {
     private UUID requestID;
     private static final String TABLE_NAME = "allbooks";
     private List<Integer> result = new ArrayList<>();
-    private List<Integer> numberOfBooks = new ArrayList<>(); // ilosc ksiazek jakie zarzadal reader
+    private List<Integer> numberOfBooks = new ArrayList<>();
     private Session session;
     private int numberOfTitles;
     private int lastUserId;
@@ -26,11 +26,11 @@ public class Books {
         List<String> new_titles = new ArrayList<>();
         lastUserId = idUser;
 
-
+        Stats.getInstance().request(idUser,new_titles);
         for (int i=0;i<titles.size();i+=2) {
             List<Integer> requestBooks;
             requestBooks = getBook(titles.get(i), 1+Integer.valueOf(titles.get(i+1)));
-            //i++;
+
 
             if (requestBooks.isEmpty()) {
                 result.add(-1);
@@ -81,7 +81,7 @@ public class Books {
             RequestBook requestBook = new RequestBook(session, requestID, result.get(i), lastUserId, numberOfBooks.get(i),true);
             requestBook.saveRequest();
         }
-        //Stats.getInstance().unrent(idUser,new_titles);
+        Stats.getInstance().unrent(lastUserId,numberOfTitles);
 
         result.clear();
         numberOfBooks.clear();
