@@ -3,10 +3,10 @@ import CassBackend.Backend;
 //koment
 public class Main {
     public static void main(String[] args) {
-        final int clientCount = 150;
+        final int clientCount = 31;
         final int simulationTime = 150;
         final int checkDelay = 100; // delay to make it slower a little
-        final int maxBookReqNumber = 4;
+        final int maxBookReqNumber = 1;
 
 
 
@@ -23,7 +23,7 @@ public class Main {
         insertbooks.saveBooks(2,"Java testing",150,150);
         insertbooks.saveBooks(3,"Try to catch",200,200);
         insertbooks.saveBooks(4,"The Shining",150,150);
-        insertbooks.saveBooks(4,"Pet Sementary",200,200);
+        insertbooks.saveBooks(5,"Pet Sematary",200,200);
 
        // Books books = new Books(backend);
 
