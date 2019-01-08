@@ -26,7 +26,7 @@ public class Books {
         List<String> new_titles = new ArrayList<>();
         lastUserId = idUser;
 
-        Stats.getInstance().request(idUser,new_titles);
+
         for (int i=0;i<titles.size();i+=2) {
             List<Integer> requestBooks;
             requestBooks = getBook(titles.get(i), 1+Integer.valueOf(titles.get(i+1)));
@@ -41,6 +41,7 @@ public class Books {
                 numberOfBooks.add(1+Integer.valueOf(titles.get(i+1)));
             }
         }
+        Stats.getInstance().request(idUser,new_titles);
 
         if (result.contains(-1)) {
             return false;
@@ -63,7 +64,6 @@ public class Books {
             Stats.getInstance().rent(idUser,new_titles);
             return true;
         }else{
-            System.out.println("NIE_DOSTALEM");
             for (int i=0;i<(numberOfTitles);i++) {
                 RequestBook requestBook = new RequestBook(session, requestID, result.get(i), lastUserId, 0,true);
                 requestBook.saveRequest();
@@ -100,8 +100,6 @@ public class Books {
         rs.forEach(r -> {
             if (r.getInt("nr_of_free_books") > requestedBooks) {
                 requestBooks.add(r.getInt("id_book"));
-            } else {
-                //jakies info ze nie znalazl
             }
         });
 
