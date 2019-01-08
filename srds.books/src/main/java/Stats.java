@@ -26,6 +26,7 @@ public class Stats {
 
     public void dontrent(int id_user, List<String> book) {
         log(id_user, "Nie udało się wyporzyczyć!{"+book+"}");
+        niewypozyczone+=book.size();
     }
     public void unrent(int id_user, int books) {
         log(id_user, "Oddalem ksiazke! Ilość:{"+books+"}");
@@ -40,9 +41,9 @@ public class Stats {
 
     public void showStats() {
         int zgubiono = wypozyczone - oddano;
-        System.out.println("Wyporzyczone ksiązki = "+wypozyczone);
-        System.out.println("Niewypozyczone = "+niewypozyczone);
-        System.out.println("Prosby o wyporzyczenie = "+prosb);
+        System.out.println("Wypożyczone ksiązki = "+wypozyczone);
+        System.out.println("Niewypożyczone = "+niewypozyczone);
+        System.out.println("Prosby o wypożyczenie = "+prosb);
         System.out.println("Zgubiono ksiązek = "+zgubiono);
         /*System.out.println("------\nHappy Clients:");
         reservations.forEach(r -> System.out.print("" + r + ", "));
