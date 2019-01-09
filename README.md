@@ -4,7 +4,7 @@ Projekt na zajęcia SRDS z bazy danych nosql cassandra.
 **Wykonanie:** Mateusz Łaczkowski, Patryk Jankowski  
 
 **Cel projektu:**  
-Napisanie w języku Java implementacji pomysłu zarządzania wirtualną biblioteką w której klient może wypożyczyć książkę i ją zwrócić.
+Napisanie w języku Java implementacji pomysłu zarządzania wirtualną wypożyczalnią książek w której klient może wypożyczyć książkę, bądź zbiór książek i je zwrócić.
 
 **Założenia:**  
 Klienci mogą wypożyczyć ksiązki z dostępnej z góry narzuconej puli.  
@@ -17,7 +17,7 @@ Zebranie danych w czasie trwania cyklu i przedstawienie ich.
 REQUEST_TABLE:  
   id uuid,  
   id_book int,  
-  id_user int, ("RODO!!!")  
+  id_user int,   
   req_books int,
   returned boolean,
   timestamp bigint,  
@@ -33,4 +33,4 @@ REQUEST_TABLE:
 ```  
   
 **Wnioski:**  
-Nie mam pojecia, może coś w stylu ze baza nosql lepiej nadaje sie do tego zadania.
+Baza nosql posiada swoje zalety które sa uwiodcznione w projekcie,  
